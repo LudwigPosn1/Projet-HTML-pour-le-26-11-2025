@@ -25,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['role_id'] = $user['role_id'];
 
         if ($user['role_id']==1){
-            header ('Location: tableau.php')
+            header ('Location: tableau.php');
         }else{
-            header ('Location: admin.php')
+            header ('Location: admin.php');
         }        
     die("Email ou mot de passe incorrect.");
     }
