@@ -14,6 +14,7 @@ Bonjour <?php echo htmlspecialchars($_SESSION['user_nom']); ?>
 
 <br><br>
 <a href="logout.php">Se déconnecter</a>
+<a href="delete.php">Supprimer mon compte</a>
 
 </body>
 </html>
