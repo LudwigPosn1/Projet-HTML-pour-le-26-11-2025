@@ -5,6 +5,7 @@
 // ---------------------------------------
 function getDB() {
     $host = "localhost";
+    $port = 3307;
     $dbname = "gestion_users";
     $username = "root";
     $password = "";
