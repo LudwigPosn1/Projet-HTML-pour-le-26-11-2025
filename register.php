@@ -5,41 +5,32 @@ require "fonctions.php";
 $pdo = getDB();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     $nom = trim($_POST['nom']);
     $email = trim($_POST['email']);
     $adresse = trim($_POST['adresse']);
     $password = trim($_POST['password']);
-    $retapepassword = trim($_POST['retapepassword']);
+    $passwordConfirm = trim($_POST['password_confirm']);
+    $role_id = 1;
 
-    // Vérifier champs vides
-    if ($nom === "" || $email === "" || $adresse === "" || $password === "" || $retapepassword === "") {
+    if ($nom === "" || $email === "" || $adresse === "" || $password === "" || $passwordConfirm === "") {
         die("Tous les champs sont obligatoires.");
     }
 
-    // Email valide ?
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         die("Email invalide.");
     }
 
-    // Vérification si les mots de passe correspondent
-    if ($password !== $retapepassword) {
+    if ($password !== $passwordConfirm) {
         die("Les mots de passe ne correspondent pas.");
     }
 
-    // Vérifier si l'email existe déjà
     if (emailExiste($pdo, $email)) {
         die("Cet email existe déjà.");
     }
 
-    // Hash du mot de passe
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insertion en BDD
-    $sql = "INSERT INTO users (nom, email, adresse, password, role_id) VALUES (?, ?, ?, ?, ?   )";
-    $stmt = $pdo->prepare($sql);
-
-    if ($stmt->execute([$nom, $email, $adresse, $passwordHash,1])) {
+    if (creerUtilisateur($pdo, $nom, $email, $passwordHash, $adresse, $role_id)) {
         echo "Inscription réussie. <a href='login.php'>Se connecter</a>";
     } else {
         echo "Erreur lors de l'inscription.";
@@ -48,28 +39,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-<h2>Inscription</h2>
+    <div class="nebula-dot" style="left: 10%; top: 15%;"></div>
+    <div class="nebula-dot secondary" style="right: 8%; bottom: 22%;"></div>
 
-<form method="POST">
-    Nom :<br>
-    <input type="text" name="nom" required><br><br>
+    <header class="topbar">
+        <div class="brand">
+            <span class="orb"></span>
+            <span>Welcome</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="register.php">Inscription</a>
+            <a href="login.php">Connexion</a>
+        </nav>
+    </header>
 
-    Email :<br>
-    <input type="email" name="email" required><br><br>
+    <main class="page">
+        <div class="grid-two">
 
-    Adresse :<br>
-    <input type="text" name="adresse" required><br><br>
-
-    Mot de passe :<br>
-    <input type="password" name="password" required><br><br>
-
-    Retaper le mot de passe :<br>
-    <input type="password" name="retapepassword" required><br><br>
-
-    <button type="submit">S'inscrire</button>
-</form>
-
+            <section class="card">
+                <h3>Créer un compte</h3>
+                <form method="POST">
+                    <div class="field">
+                        <label for="nom">Nom</label>
+                        <input id="nom" type="text" name="nom" required>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" name="email" required>
+                    </div>
+                    <div class="field">
+                        <label for="adresse">Adresse physique</label>
+                        <input id="adresse" type="text" name="adresse" placeholder="N° et rue, ville" required>
+                    </div>
+                    <div class="field">
+                        <label for="password">Mot de passe</label>
+                        <input id="password" type="password" name="password" required>
+                    </div>
+                    <div class="field">
+                        <label for="password_confirm">Confirmer le mot de passe</label>
+                        <input id="password_confirm" type="password" name="password_confirm" required>
+                    </div>
+                    <div class="actions">
+                        <button class="btn" type="submit">S'inscrire</button>
+                        <a class="inline-link" href="login.php">Déjà membre ?</a>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

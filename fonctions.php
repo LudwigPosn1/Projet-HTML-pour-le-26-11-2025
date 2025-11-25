@@ -8,10 +8,11 @@ function getDB() {
     $dbname = "gestion_users";
     $username = "root";
     $password = "";
+    $role = "user";
 
     try {
         return new PDO(
-            "mysql:host=$host;dbname=$dbname;port=3307;charset=utf8",
+            "mysql:host=$host;dbname=$dbname;charset=utf8",
             $username,
             $password,
             [
@@ -41,9 +42,10 @@ function emailExiste($pdo, $email) {
 // ---------------------------------------
 // Inscrire un utilisateur
 // ---------------------------------------
-function creerUtilisateur($pdo, $nom, $email, $passwordHash) {
-    $stmt = $pdo->prepare("INSERT INTO users (nom, email, password, adresse) VALUES (?, ?, ?, ?)");
-    return $stmt->execute([$nom, $email, $passwordHash]);
+function creerUtilisateur($pdo, $nom, $email, $passwordHash, $adresse, $role_id = 1) {
+    $sql = "INSERT INTO users (nom, email, password, adresse, role_id) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute([$nom, $email, $passwordHash, $adresse, $role_id]);
 }
 
 
@@ -52,9 +54,19 @@ function creerUtilisateur($pdo, $nom, $email, $passwordHash) {
 // Récupérer un utilisateur par email
 // ---------------------------------------
 function getUserByEmail($pdo, $email) {
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+    $sql = "SELECT users.*, role.role_name FROM users JOIN role ON users.role_id = role.id WHERE email = ?";
+    $stmt = $pdo->prepare($sql);
     $stmt->execute([$email]);
-    return $stmt->fetch();
+    return $stmt->fetch(PDO :: FETCH_ASSOC);
+}
+
+// ---------------------------------------
+// Récupérer les rôles de l'utilisateur
+// ---------------------------------------
+function getAllUsers($pdo) {
+    $sql = "SELECT users.id, users.nom, users.email, role.role_name FROM users JOIN role On users.role_id = role.id";
+    $stmt = $pdo->query($sql);
+    return $stmt->fetchAll(PDO :: FETCH_ASSOC);
 }
 
 
@@ -78,20 +90,24 @@ function requireLogin() {
     }
 }
 
+// ---------------------------------------
+// Supprimer un compte utilisateur
+// ---------------------------------------
 function deleteAccount($pdo, $id){
-    $stmt = $pdo->prepare("DELETE FROM users WHERE id = ?");
-    $stmt->execute([$id]);}
-
-// ---------------------------------------
-// Récupérer les rôles de l'utilisateur
-// ---------------------------------------
-// ---------------------------------------
-// Récupérer les rôles de l'utilisateur
-// ---------------------------------------
-function getAllUsers($pdo) {
-    $sql = "SELECT users.id, users.nom, users.email, roles.nom FROM users JOIN roles On users.role_id = roles.id";
-    $stmt = $pdo->query($sql);
-    return $stmt->fetchAll(PDO :: FETCH_ASSOC);
+	$stmt = $pdo->prepare("DELETE FROM users WHERE id = ?");
+    $stmt->execute([$id]);
 }
-?>
 
+// ---------------------------------------
+// Récupérer un utilisateur avec un ID
+// ---------------------------------------
+function getUserById($pdo, $id) {
+    $sql = "SELECT users.*, role.role_name FROM users JOIN role ON users.role_id = role.id WHERE users.id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO :: FETCH_ASSOC);
+}
+
+
+
+?>

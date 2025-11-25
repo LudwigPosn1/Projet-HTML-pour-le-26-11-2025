@@ -1,11 +1,10 @@
 <?php
 session_start();
 require "fonctions.php";
+
 $pdo = getDB();
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
@@ -19,38 +18,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Email ou mot de passe incorrect.");
     }
 
-    if (!password_verify($password, $user['password'])) { 
+    if (!password_verify($password, $user['password'])) {
         die("Email ou mot de passe incorrect.");
     }
-    
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['nom'] = $user['nom'];
-    $_SESSION['role_id'] = $user['role_id'];
 
-    if ($user['role_id'] == 2){
-        header ('Location: admin.php');
-    }else{
-       header ('Location: tableau.php');
-    } 
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['user_nom'] = $user['nom'];
+    $_SESSION['role_id'] = $user['role_id'];
+    $_SESSION['role_name'] = $user['role_name'];
+
+    header("Location: tableau.php");
     exit;
 }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion </title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
+    <div class="nebula-dot" style="left: 6%; top: 22%;"></div>
+    <div class="nebula-dot secondary" style="right: 12%; bottom: 16%;"></div>
 
-<h2>Connexion</h2>
+    <header class="topbar">
+        <div class="brand">
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="register.php">Inscription</a>
+            <a href="login.php">Connexion</a>
+        </nav>
+    </header>
 
-<form method="POST">
-    Email :<br>
-    <input type="email" name="email" required><br><br>
-
-    Mot de passe :<br>
-    <input type="password" name="password" required><br><br>
-
-    <button type="submit">Se connecter</button>
-</form>
-
+    <main class="page">
+        <div class="grid-two">
+            <section class="card">
+                <h3>Accéder au compte</h3>
+                <form method="POST">
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" name="email" required>
+                    </div>
+                    <div class="field">
+                        <label for="password">Mot de passe</label>
+                        <input id="password" type="password" name="password" required>
+                    </div>
+                    <div class="actions">
+                        <button class="btn" type="submit">Se connecter</button>
+                        <a class="inline-link" href="register.php">Créer un compte</a>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

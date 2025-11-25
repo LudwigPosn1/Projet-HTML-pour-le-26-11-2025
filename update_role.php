@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 require "fonctions.php";
 
@@ -9,7 +9,7 @@ if (!isset($_SESSION['role_id']) || $_SESSION['role_id'] !== 2) {
 $pdo = getDB();
 
 if (!isset($_POST['user_id'], $_POST['role_id'])) {
-    die('Requête invalide.');
+    die('Requete invalide.');
 }
 
 $user_id = intval($_POST['user_id']);
