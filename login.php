@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "fonctions.php";
+$pdo = getDB();
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,24 +19,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Email ou mot de passe incorrect.");
     }
 
-    if (!password_verify($password, $user['password'])) {
-        
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['nom'] = $user['nom'];
-        $_SESSION['role_id'] = $user['role_id'];
-
-        if ($user['role_id']==1){
-            header ('Location: tableau.php');
-        }else{
-            header ('Location: admin.php');
-        }        
-    die("Email ou mot de passe incorrect.");
+    if (!password_verify($password, $user['password'])) { 
+        die("Email ou mot de passe incorrect.");
     }
-
+    
     $_SESSION['user_id'] = $user['id'];
-    $_SESSION['user_nom'] = $user['nom'];
+    $_SESSION['nom'] = $user['nom'];
+    $_SESSION['role_id'] = $user['role_id'];
 
-    header("Location: tableau.php");
+    if ($user['role_id'] == 2){
+        header ('Location: admin.php');
+    }else{
+       header ('Location: tableau.php');
+    } 
     exit;
 }
 ?>
