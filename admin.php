@@ -21,11 +21,29 @@ $users = getAllUsers($pdo);
         <h1>Bonjour, <?php echo htmlspecialchars($_SESSION['nom']) ?></h1>
         <h2>Liste des utlisateurs :</h2>
         <table border="1">
-          <?php foreach ($users as $user): ?>
-            <tr>
-                <td><?php htmlspecialchars($user['nom'])?></td>
-                <td><?php htmlspecialchars($user['email'])?></td>
-            </tr>
+          <tr>
+            <th> ID </th>
+            <th> NOM </th>
+            <th> EMAIL </th>
+            <th> ROLE </th>
+            <th> CHANGER DE ROLE </th>
+          </tr>
+            <?php foreach ($users as $user): ?>
+              <tr>
+                  <td> <?= $user['id']?></td>
+                  <td> <?= $user['email']?></td>
+                  <td> <?= $user['nom'] ?></td>
+            <td>
+                <form method="POST" action="update_role.php">
+                    <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                    <select name="role_id">
+                        <option value="1"> USER </option>
+                        <option value="2"> ADMINISTRATEUR </option>
+                    </select>
+                    <button type="submit"> Modifier </button>
+                </form>
+            </td>
+              </tr>
           <?php endforeach; ?>
         <a href="logout.php">Se déconnecter</a>
     </body>
