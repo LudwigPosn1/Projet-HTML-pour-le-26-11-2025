@@ -8,7 +8,7 @@
 
 
     <body>
-        <h1>Bienvenue dans votre espace utilisateur</h1>
+        <h1>Bonjour, <?php echo htmlspecialchars($_SESSION['user_nom']) ?></h1>
         <a href="logout.php">Se déconnecter</a>
     </body>
 <html>
