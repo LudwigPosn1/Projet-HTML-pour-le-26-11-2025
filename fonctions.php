@@ -82,4 +82,16 @@ function deleteAccount($pdo, $id){
     $stmt = $pdo->prepare("DELETE FROM users WHERE id = ?");
     $stmt->execute([$id]);}
 
+// ---------------------------------------
+// Récupérer les rôles de l'utilisateur
+// ---------------------------------------
+// ---------------------------------------
+// Récupérer les rôles de l'utilisateur
+// ---------------------------------------
+function getAllUsers($pdo) {
+    $sql = "SELECT users.id, users.nom, users.email, roles.nom FROM users JOIN roles On users.role_id = roles.id";
+    $stmt = $pdo->query($sql);
+    return $stmt->fetchAll(PDO :: FETCH_ASSOC);
+}
 ?>
+
