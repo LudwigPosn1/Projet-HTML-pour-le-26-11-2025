@@ -1,7 +1,7 @@
 <?php
 session_start();
 $pdo = getDB();
-if (!isset($_SESSION['users']) || $_SESSION['role_id'] != 1) { //Vérifie si l'utlisateur est bien connecté et si le rôle est un adminanistrateur
+if (!isset($_SESSION['users']) || $_SESSION['role_id'] != 2) { //Vérifie si l'utlisateur est bien connecté et si le rôle est un adminanistrateur
     header('Location: login.php');
     exit();
 }
