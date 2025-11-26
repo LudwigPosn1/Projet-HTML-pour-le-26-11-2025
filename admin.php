@@ -2,7 +2,7 @@
 session_start();
 require "fonctions.php";
 
-if (!isset($_SESSION['roles']) || $_SESSION['roles'] !== 'admin') {
+if (!isset($_SESSION['role_name']) || $_SESSION['role_name'] !== 'admin') {
     die('Accès refusé.');
 }
 
@@ -31,7 +31,7 @@ $users = getAllUsers($pdo);
             <td> <?= $u['id'] ?></td>
             <td> <?= $u['nom'] ?></td>
             <td> <?= $u['email'] ?></td>
-            <td> <?= $u['roles'] ?></td>
+            <td> <?= $u['role_name'] ?></td>
             <td>
                 <form method="POST" action="update_role.php">
                     <input type="hidden" name="user_id" value="<?= $u['id'] ?>">

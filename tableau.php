@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_account'])) {
         <nav class="nav-links">
             <a href="index.html">Accueil</a>
             <a href="logout.php">Déconnexion</a>
-<?php if ($_SESSION['roles'] === 'admin'): ?>
+<?php if ($_SESSION['role_name'] === 'admin'): ?>
     <div class="admin-btn">
         <a href="admin.php" class="btn"> Accès Administrateur </a>
     </div>
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_account'])) {
         <div class="grid-two">
             <section class="hero">
                 <div class="eyebrow">Bienvenue</div>
-                <p>Statut de compte : <?php echo htmlspecialchars($user['roles']); ?> </p>
+                <p>Statut de compte : <?php echo htmlspecialchars($user['role_name']); ?> </p>
             </section>
 
             <section class="card">
