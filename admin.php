@@ -16,7 +16,10 @@ $users = getAllUsers($pdo);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Espace administrateur</title>
-    <link rel="stylesheet" href="style-admin.css">
+    <link rel="stylesheet" href="css/styles-admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <html>
 <body>
@@ -35,11 +38,11 @@ $users = getAllUsers($pdo);
 
         <?php foreach ($users as $u): ?>
         <tr class ="ligne2">
-            <td class="colonne1.1"> <?= $u['id'] ?></td>
-            <td class="colonne1.2"> <?= $u['nom'] ?></td>
-            <td class="colonne1.3"> <?= $u['email'] ?></td>
-            <td class="colonne1.4"> <?= $u['role_name'] ?></td>
-            <td class="colonne1.5">
+            <td class="colonne1-1"> <?= $u['id'] ?></td>
+            <td class="colonne1-2"> <?= $u['nom'] ?></td>
+            <td class="colonne1-3"> <?= $u['email'] ?></td>
+            <td class="colonne1-4"> <?= $u['role_name'] ?></td>
+            <td class="colonne1-5">
                 <form method="POST" action="update_role.php">
                     <input type="hidden" name="user_id" value="<?= $u['id'] ?>">
                     <select class="choix_role" name="role_id">
@@ -49,7 +52,7 @@ $users = getAllUsers($pdo);
                     <button class="modify_button" type="submit"> Modifier </button>
                 </form>
             </td>
-            <td class="colonne1.6"> 
+            <td class="colonne1-6"> 
                 <form method="POST" action="delete_user.php" onsubmit="return confirm('Êtes-vous certain de vouloir supprimer ce compte ? Les données seront perdues.');">
                     <input type="hidden" name="user_id" value="<?=$u['id'] ?>">
                     <button class="delete_bouton" type="submit" class="btn btn-danger">Supprimer le compte</button>
@@ -73,7 +76,7 @@ $users = getAllUsers($pdo);
     <label class="password">Mot de passe :</label>
     <input class="password_for_create" type="password" name="password" required>
 <br>
-    <label>Rôle :</label>
+    <label class="role_for_create">Rôle :</label>
     <select class="type_role" name="role_id">
         <option class="option3" value="1">Utilisateur</option>
         <option class="option4" value="2">Administrateur</option>
