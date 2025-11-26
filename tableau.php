@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_account'])) {
         <nav class="nav-links">
             <a href="index.html">Accueil</a>
             <a href="logout.php">Déconnexion</a>
-<?php if ($_SESSION['role_name'] === 'admin'): ?>
+<?php if (isset($_SESSION['role_name']) && $_SESSION['role_name'] === 'admin'): ?>
     <div class="admin-btn">
         <a href="admin.php" class="btn"> Accès Administrateur </a>
     </div>

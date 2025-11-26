@@ -5,6 +5,7 @@
 // ---------------------------------------
 function getDB() {
     $host = "localhost";
+    $port = "3307";
     $dbname = "gestion_users";
     $username = "root";
     $password = "";
@@ -12,7 +13,7 @@ function getDB() {
 
     try {
         return new PDO(
-            "mysql:host=$host;dbname=$dbname;charset=utf8",
+            "mysql:host={$host};port={$port};dbname={$dbname};charset=utf8",
             $username,
             $password,
             [
