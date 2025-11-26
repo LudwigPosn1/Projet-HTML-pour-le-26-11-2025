@@ -13,7 +13,7 @@ function getDB() {
 
     try {
         return new PDO(
-            "mysql:host=$host;dbname=$dbname;charset=utf8",
+            "mysql:host={$host};port={$port};dbname={$dbname};charset=utf8",
             $username,
             $password,
             [
@@ -55,7 +55,7 @@ function creerUtilisateur($pdo, $nom, $email, $passwordHash, $adresse, $role_id 
 // Récupérer un utilisateur par email
 // ---------------------------------------
 function getUserByEmail($pdo, $email) {
-    $sql = "SELECT users.*, role.role_name FROM users JOIN role ON users.role_id = role.id WHERE email = ?";
+    $sql = "SELECT users.*, roles FROM users JOIN roles ON users.role_id = roles.id WHERE email = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$email]);
     return $stmt->fetch(PDO :: FETCH_ASSOC);
@@ -65,7 +65,7 @@ function getUserByEmail($pdo, $email) {
 // Récupérer les rôles de l'utilisateur
 // ---------------------------------------
 function getAllUsers($pdo) {
-    $sql = "SELECT users.id, users.nom, users.email, role.role_name FROM users JOIN role On users.role_id = role.id";
+    $sql = "SELECT users.id, users.nom, users.email, roles FROM users JOIN roles On users.role_id = roles.id";
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO :: FETCH_ASSOC);
 }
@@ -103,7 +103,7 @@ function deleteAccount($pdo, $id){
 // Récupérer un utilisateur avec un ID
 // ---------------------------------------
 function getUserById($pdo, $id) {
-    $sql = "SELECT users.*, role.role_name FROM users JOIN role ON users.role_id = role.id WHERE users.id = ?";
+    $sql = "SELECT users.*, roles FROM users JOIN roles ON role_id = roles.id WHERE id = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id]);
     return $stmt->fetch(PDO :: FETCH_ASSOC);

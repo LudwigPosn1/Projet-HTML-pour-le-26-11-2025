@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['user_nom'] = $user['nom'];
     $_SESSION['role_id'] = $user['role_id'];
-    $_SESSION['role_name'] = $user['role_name'];
+    $_SESSION['roles'] = $user['roles'];
 
     header("Location: tableau.php");
     exit;
