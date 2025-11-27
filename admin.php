@@ -16,15 +16,20 @@ $users = getAllUsers($pdo);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Espace administrateur</title>
-    <link rel="stylesheet" href="assets\css\styles-admin.css">
+    <link rel="stylesheet" href=".\assets\css\styles-admin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <html>
 <body>
-    <p class="back"><a href="tableau.php">Retour à mon compte</a></p>
-    <h1 class="titre1"> Accès ADMINISTRATEUR </h1>
+    <nav>
+        <ul>
+            <li class="titre1"> Accès ADMINISTRATEUR </li>
+            <li class="back"><a href="tableau.php">Retour à mon compte</a></li>
+        </ul>
+    </nav>
+    
 
     <table class="list_user" border="1">
         <tr class ="ligne1">
