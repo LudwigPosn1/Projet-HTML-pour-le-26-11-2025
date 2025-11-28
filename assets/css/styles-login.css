@@ -1,0 +1,98 @@
+:root{
+    /* Couleurs pour le background */
+    --color-background-primary: #555658;
+    --color-background-secondary: #5c5e5fd0;
+    --color-hover-selection: #8badda;
+    --color-card-panneaux: #948c8c;
+
+    /* Couleurs pour le texte */
+    --color-text-primary: #111827;
+    --color-text-secondary: #374151;
+    --color-for-dark-background: #FFFFFF;
+
+    /* Couleurs pour les boutons primaires */
+    --color-button-primary: #1E3A9A;
+    --color-text-primary-button: #FFFFFF;
+    --color-hover-button-primary: #273fa3;
+
+    /*Couleurs pour boutons secondaires*/
+    --color-button-secondary: #FFFFFF;
+    --color-text-secondary-button: #1E3A8A;
+    --color-hover-button-secondary: #DBEAFE;
+
+    /*Couleurs pour les boutons neutres*/
+    --color-button-neutre: #E5E7EB;
+    --color-text-neutre-button: #111827;
+    --color-hover-button-neutre: #D1D5DB;
+
+    /* Couleurs pour les sémantiques */
+    --color-success: #3FB950;
+    --color-error: #F85149;
+}
+
+*{
+    font-family:'Inter', sans-serif;
+}
+
+body{
+    background-color: var(--color-background-primary); 
+    margin: 30px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between; /* Probablement ce que vous avez déjà pour l'espacement */
+    align-items: center;
+    list-style: none;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: var(--color-text-primary-button);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+a:hover{
+    color:  var(--color-hover-selection);
+    transform: scale(1.1);
+}
+
+
+
+.Home_button{
+    background-color: var(--color-button-primary);
+    border-radius: 20px;
+    padding: 12px 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.Home_button:hover{
+    color:  var(--color-hover-selection);
+    transform: scale(1.1);
+}
+
+.Register_button{
+    background-color: var(--color-button-primary);
+    border-radius: 20px;
+    padding: 12px 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.Register_button:hover{
+    color:  var(--color-hover-selection);
+    transform: scale(1.1);
+}
+
+.titre1{
+    align-self: center;
+    color: var(--color-for-dark-background);
+    border-radius: 10px;
+    padding: 12px 12px 12px 12px;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+

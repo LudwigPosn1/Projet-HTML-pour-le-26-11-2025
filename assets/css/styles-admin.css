@@ -54,6 +54,7 @@ nav ul {
     transition: transform 0.2s ease;
     
 }
+
 .back:hover{
     color:  var(--color-hover-selection);
     transform: scale(1.1);

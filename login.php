@@ -39,25 +39,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion </title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href=".\assets\css\styles-login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="nebula-dot" style="left: 6%; top: 22%;"></div>
-    <div class="nebula-dot secondary" style="right: 12%; bottom: 16%;"></div>
-
     <header class="topbar">
         <div class="brand">
         </div>
         <nav class="nav-links">
-            <a href="index.html">Accueil</a>
-            <a href="register.php">Inscription</a>
-            <a href="login.php">Connexion</a>
+            <ul>
+                <li class="Home_button"><a href="index.html">Accueil</a></li>
+                <li class="titre1">Accéder au compte</li>
+                <li class="Register_button"><a href="register.php">Inscription</a></li>
+            </ul>
         </nav>
     </header>
 
     <main class="page">
         <div class="grid-two">
             <section class="card">
-                <h3>Accéder au compte</h3>
                 <form method="POST">
                     <div class="field">
                         <label for="email">Email</label>
