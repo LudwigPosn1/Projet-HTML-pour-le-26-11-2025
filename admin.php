@@ -60,7 +60,7 @@ $users = getAllUsers($pdo);
             <td class="colonne1-6"> 
                 <form method="POST" action="delete_user.php" onsubmit="return confirm('Êtes-vous certain de vouloir supprimer ce compte ? Les données seront perdues.');">
                     <input type="hidden" name="user_id" value="<?=$u['id'] ?>">
-                    <button class="delete_bouton" type="submit" class="btn btn-danger">Supprimer le compte</button>
+                    <button class="delete_button" type="submit" class="btn btn-danger">Supprimer le compte</button>
                 </form>
             </td>
         </tr>
@@ -69,24 +69,24 @@ $users = getAllUsers($pdo);
 <h2 class="sous_titres1">Ajouter un utilisateur</h2>
 
 <form method="POST" action="add_user.php">
-    <label class="name">Nom :</label>
+    <label class="name">Nom :</label><br>
     <input class="name_for_create" type="text" name="nom" required>
 <br>
-    <label class="email">Email :</label>
+    <label class="email">Email :</label><br>
     <input class="email_for_create" type="email" name="email" required>
 <br>
-    <label class="adress">Adresse :</label>
-    <input class="adress_for_create" type="text" name="adresse" required>
+    <label class="adress">Adresse :</label><br>
+    <input class="adress_for_create" type="text" name="adresse" placeholder="N° Rue CP Ville" required>
 <br>
-    <label class="password">Mot de passe :</label>
+    <label class="password">Mot de passe :</label><br>
     <input class="password_for_create" type="password" name="password" required>
 <br>
-    <label class="role_for_create">Rôle :</label>
+    <label class="role_for_create">Rôle :</label><br>
     <select class="type_role" name="role_id">
         <option class="option3" value="1">Utilisateur</option>
         <option class="option4" value="2">Administrateur</option>
     </select>
-<br>
+<br><br>
     <button class="create_validation" type="submit">Créer l'utilisateur</button>
 </form>
 

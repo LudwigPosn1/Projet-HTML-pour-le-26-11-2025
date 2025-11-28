@@ -1,9 +1,9 @@
 :root{
     /* Couleurs pour le background */
-    --color-background-primary: #F3F4F6;
-    --color-background-secondary: #E5E7EB;
-    --color-hover-selection: #DBEAFE;
-    --color-card-panneaux: #FFFFFF;
+    --color-background-primary: #555658;
+    --color-background-secondary: #5c5e5fd0;
+    --color-hover-selection: #8badda;
+    --color-card-panneaux: #948c8c;
 
     /* Couleurs pour le texte */
     --color-text-primary: #111827;
@@ -40,204 +40,166 @@ body{
 }
 
 nav ul {
-    display:flex;
-    justify-content: space-between;
+    display: flex;
+    justify-content: space-between; /* Probablement ce que vous avez déjà pour l'espacement */
+    align-items: center;
     list-style: none;
 }
 
 .back {
-    
     background-color: var(--color-button-primary);
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 12px 12px;
-
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    
 }
+.back:hover{
+    color:  var(--color-hover-selection);
+    transform: scale(1.1);
+}
+
+a:hover{
+    color:  var(--color-hover-selection);
+    transform: scale(1.1);
+}
+
 nav ul li a {
     text-decoration: none;
     color: var(--color-text-primary-button);
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
 .titre1{
     align-self: center;
-    color: var(--color-text-primary-button);
-    background-color: var(--color-button-primary);
+    color: var(--color-for-dark-background);
     border-radius: 10px;
     padding: 12px 12px 12px 12px;
     font-size: xx-large;
+    font-weight: bold;
 }
+
 
 .list_user{
     justify-content: flex-start;
     background-color: var(--color-background-secondary);
+    color: var(--color-for-dark-background);
     width: 100%;
     table-layout: auto;
     border-collapse: collapse;
-
-}
-
-.ligne1{
-
-
-}
-
-.colonne1{
-
-
-}
-
-.colonne2{
-
-
-}
-
-.colonne3{
-
-
-}
-
-.colonne4{
-
-
-}
-
-.colonne5{
-
-
-}
-
-.colonne6{
-
-
-}
-
-.ligne2{
-
-
 }
 
 .colonne1-1{
-
-
+    text-align: center;
+    color: var(--color-for-dark-background);
 }
 
 .colonne1-2{
-
-
+    text-align: center;
+    color: var(--color-for-dark-background);
 }
 
 .colonne1-3{
-
-
+    text-align: center;
+    color: var(--color-for-dark-background);
 }
 
 .colonne1-4{
-
-
+    text-align: center;
+    color: var(--color-for-dark-background);
 }
 
 .colonne1-5{
-
-
+    text-align: center;
+    color: var(--color-for-dark-background);
 }
 
 .choix_role{
-
-
-}
-
-.option1{
-
-
-}
-
-.option2{
-
-
+    border-radius: 10px;
 }
 
 .modify_button{
-
-
+    background-color: var(--color-button-secondary);
+    border-color: var(--color-background-secondary);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease; /* Animation douce */
+}
+.modify_button:hover{
+    transform: scale(1.1);
 }
 
 .colonne1-6{
-
-
+    text-align: center;
 }
 
 .delete_button{
+    background-color: var(--color-button-secondary);
+    border-color: var(--color-background-secondary);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease; /* Animation douce */
+}
 
-
+.delete_button:hover{
+    transform: scale(1.1);
 }
 
 .sous_titres1{
-
-
+    color: var(--color-for-dark-background);
 }
 
 .name{
-
-
+    color: var(--color-for-dark-background);
 }
 
 .name_for_create{
-
-
+    border-radius: 10px;
 }
 
 .email{
-
-
+    color: var(--color-for-dark-background);
 }
 
 .email_for_create{
-
-
+    border-radius: 10px;
 }
 
 .adress{
-
-
+    color: var(--color-for-dark-background);
 }
 
 .adress_for_create{
-
-
+    border-radius: 10px;
 }
 
 .password{
-
-
+    color: var(--color-for-dark-background);
 }
 
 .password_for_create{
-
+    border-radius: 10px;
 
 }
 
 .role_for_create{
-
-
+    color: var(--color-for-dark-background);
 }
 
 .type_role{
-
-
-}
-
-.option3{
-
-
-}
-
-.option4{
-
-
+    border-radius: 10px;
 }
 
 .create_validation{
-
-
+    background-color: var(--color-button-secondary);
+    border-color: var(--color-background-secondary);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease; /* Animation douce */
+}
+.create_validation:hover{
+    transform: scale(1.1);
 }
 
 
