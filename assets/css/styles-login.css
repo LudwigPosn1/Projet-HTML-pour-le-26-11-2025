@@ -95,4 +95,30 @@ a:hover{
     font-weight: bold;
 }
 
+.email{
+    color: var(--color-for-dark-background);
+}
 
+.email_log{
+    border-radius: 10px;
+}
+
+.password{
+    color: var(--color-for-dark-background);
+}
+
+.password_log{
+    border-radius: 10px;
+}
+
+.log_button{
+    background-color: var(--color-button-secondary);
+    border-color: var(--color-background-secondary);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease; /* Animation douce */
+}
+
+.log_button:hover{
+    transform: scale(1.1);
+}

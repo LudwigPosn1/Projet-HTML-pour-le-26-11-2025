@@ -62,17 +62,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <section class="card">
                 <form method="POST">
                     <div class="field">
-                        <label for="email">Email</label>
-                        <input id="email" type="email" name="email" required>
-                    </div>
+                        <label class="email" for="email">Email : </label><br>
+                        <input class="email_log" type="email" name="email" required>
+                    </div><br>
                     <div class="field">
-                        <label for="password">Mot de passe</label>
-                        <input id="password" type="password" name="password" required>
-                    </div>
+                        <label class="password" for="password">Mot de passe : </label><br>
+                        <input class="password_log" type="password" name="password" required>
+                    </div><br>
                     <div class="actions">
-                        <button class="btn" type="submit">Se connecter</button>
-                        <a class="inline-link" href="register.php">Créer un compte</a>
-                    </div>
+                        <button class="log_button" type="submit">Se connecter</button><br>
+                    </div><br>
                 </form>
             </section>
         </div>
